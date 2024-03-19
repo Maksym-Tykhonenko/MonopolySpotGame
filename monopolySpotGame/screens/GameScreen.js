@@ -30,7 +30,7 @@ const GameScreen = ({navigation}) => {
                 style={{
                   color: 'gold',
                   fontFamily: 'Chewy-Regular',
-                  fontSize: 35,
+                  fontSize: 40,
                   shadowColor: 'gold',
                   shadowOffset: {width: 0, height: 8},
                   shadowOpacity: 0.8,
@@ -513,7 +513,7 @@ const GameScreen = ({navigation}) => {
               style={{
                 color: 'gold',
                 fontFamily: 'Chewy-Regular',
-                fontSize: 30,
+                fontSize: 40,
               }}>
               Back
             </Text>

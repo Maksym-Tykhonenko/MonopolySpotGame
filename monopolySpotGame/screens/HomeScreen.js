@@ -7,67 +7,98 @@ const HomeScreen = ({navigation}) => {
       <ImageBackground
         source={require('../assets/backgr_1.jpg')}
         style={{flex: 1}}>
-        <View style={{flex: 1, alignItems: 'center', justifyContent: 'center'}}>
-          <TouchableOpacity
-            onPress={() => {
-              navigation.navigate('GameScreen');
-            }}
-            style={{
-              width: 250,
-              height: 60,
-              borderWidth: 3,
-              borderRadius: 50,
-              shadowColor: 'gold',
-              shadowOffset: {width: 0, height: 8},
-              shadowOpacity: 0.8,
-              shadowRadius: 10,
-              elevation: 10,
-              alignItems: 'center',
-              justifyContent: 'center',
-              marginBottom: 40,
-              borderColor: 'gold',
-            }}>
+        <View style={{flex: 1}}>
+          <View style={{alignItems: 'center', marginTop: 100}}>
             <Text
               style={{
                 color: 'gold',
-                fontSize: 35,
-                fontWeight: 'bold',
                 fontFamily: 'Chewy-Regular',
+                fontSize: 65,
+                shadowColor: 'gold',
+                shadowOffset: {width: 0, height: 8},
+                shadowOpacity: 0.8,
+                shadowRadius: 10,
+                elevation: 10,
               }}>
-              Game
+              Spot
             </Text>
-          </TouchableOpacity>
+            <Text
+              style={{
+                color: 'gold',
+                fontFamily: 'Chewy-Regular',
+                fontSize: 65,
+                shadowColor: 'gold',
+                shadowOffset: {width: 0, height: 8},
+                shadowOpacity: 0.8,
+                shadowRadius: 10,
+                elevation: 10,
+              }}>
+              monopoly!
+            </Text>
+          </View>
 
-          <TouchableOpacity
-            onPress={() => {
-              navigation.navigate('RulesScreen');
-            }}
-            style={{
-              width: 250,
-              height: 60,
-              borderWidth: 2,
-              alignItems: 'center',
-              justifyContent: 'center',
-              borderColor: 'gold',
-              borderWidth: 3,
-              borderRadius: 50,
-              shadowColor: 'gold',
-              shadowOffset: {width: 0, height: 8},
-              shadowOpacity: 0.8,
-              shadowRadius: 10,
-              elevation: 10,
-              marginBottom: 40,
-            }}>
-            <Text
+          <View style={{flex: 1, alignItems: 'center', marginTop: 100}}>
+            <TouchableOpacity
+              onPress={() => {
+                navigation.navigate('GameScreen');
+              }}
               style={{
-                color: 'gold',
-                fontSize: 35,
-                fontWeight: 'bold',
-                fontFamily: 'Chewy-Regular',
+                width: 250,
+                height: 60,
+                borderWidth: 3,
+                borderRadius: 50,
+                shadowColor: 'gold',
+                shadowOffset: {width: 0, height: 8},
+                shadowOpacity: 0.8,
+                shadowRadius: 10,
+                elevation: 10,
+                alignItems: 'center',
+                justifyContent: 'center',
+                marginBottom: 40,
+                borderColor: 'gold',
               }}>
-              Rules
-            </Text>
-          </TouchableOpacity>
+              <Text
+                style={{
+                  color: 'gold',
+                  fontSize: 35,
+                  fontWeight: 'bold',
+                  fontFamily: 'Chewy-Regular',
+                }}>
+                Game
+              </Text>
+            </TouchableOpacity>
+
+            <TouchableOpacity
+              onPress={() => {
+                navigation.navigate('RulesScreen');
+              }}
+              style={{
+                width: 250,
+                height: 60,
+                borderWidth: 2,
+                alignItems: 'center',
+                justifyContent: 'center',
+                borderColor: 'gold',
+                borderWidth: 3,
+                borderRadius: 50,
+                shadowColor: 'gold',
+                shadowOffset: {width: 0, height: 8},
+                shadowOpacity: 0.8,
+                shadowRadius: 10,
+                elevation: 10,
+                marginBottom: 40,
+              }}>
+              <Text
+                style={{
+                  color: 'gold',
+                  fontSize: 35,
+                  fontWeight: 'bold',
+                  fontFamily: 'Chewy-Regular',
+                }}>
+                Rules
+              </Text>
+            </TouchableOpacity>
+          </View>
         </View>
       </ImageBackground>
     </View>

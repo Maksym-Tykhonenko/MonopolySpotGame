@@ -35,7 +35,7 @@ const RulesScreen = ({navigation}) => {
               style={{
                 color: 'gold',
                 fontFamily: 'Chewy-Regular',
-                fontSize: 30,
+                fontSize: 40,
               }}>
               Back
             </Text>
