@@ -1,5 +1,11 @@
 import React from 'react';
-import {ImageBackground, Text, TouchableOpacity, View} from 'react-native';
+import {
+  ImageBackground,
+  ScrollView,
+  Text,
+  TouchableOpacity,
+  View,
+} from 'react-native';
 
 const RulesScreen = ({navigation}) => {
   return (
@@ -12,9 +18,110 @@ const RulesScreen = ({navigation}) => {
             position: 'relative',
             flex: 1,
             alignItems: 'center',
-            justifyContent: 'center',
           }}>
-          <Text style={{color: 'gold'}}>Rules Screen</Text>
+          <View style={{marginTop: 50, marginBottom: 50}}>
+            <ScrollView>
+              <View>
+                <Text
+                  style={{
+                    color: 'gold',
+                    padding: 10,
+                    fontSize: 30,
+                    fontFamily: 'Chewy-Regular',
+                  }}>
+                  Rules of the game "Spot monopoly":
+                </Text>
+              </View>
+              <View>
+                <Text
+                  style={{
+                    color: 'gold',
+                    padding: 10,
+                    fontSize: 24,
+                    fontFamily: 'Chewy-Regular',
+                  }}>
+                  Goal of the game: Collect a photo dedicated to the game
+                  "Monopoly" by placing all the parts of the picture in the
+                  correct order.
+                </Text>
+              </View>
+              <View>
+                <Text
+                  style={{
+                    color: 'gold',
+                    padding: 10,
+                    fontSize: 24,
+                    fontFamily: 'Chewy-Regular',
+                  }}>
+                  Levels: The game consists of 10 levels. Starting with the
+                  first level, the following levels are unlocked as you
+                  progress.
+                </Text>
+              </View>
+              <View>
+                <Text
+                  style={{
+                    color: 'gold',
+                    padding: 10,
+                    fontSize: 24,
+                    fontFamily: 'Chewy-Regular',
+                  }}>
+                  Start of the game: Press the "Start" button to start the
+                  timer. You are given 10 minutes for each level.
+                </Text>
+              </View>
+              <View>
+                <Text
+                  style={{
+                    color: 'gold',
+                    padding: 10,
+                    fontSize: 24,
+                    fontFamily: 'Chewy-Regular',
+                  }}>
+                  Collection of photos: Move the pieces of the picture by
+                  clicking on them to place them in the correct order. Fragments
+                  can only be moved to empty spaces.
+                </Text>
+              </View>
+              <View>
+                <Text
+                  style={{
+                    color: 'gold',
+                    padding: 10,
+                    fontSize: 24,
+                    fontFamily: 'Chewy-Regular',
+                  }}>
+                  Victory: If you successfully collect the picture before the
+                  time runs out, you move on to the next level. If the time is
+                  up, you can try again.
+                </Text>
+              </View>
+              <View>
+                <Text
+                  style={{
+                    color: 'gold',
+                    padding: 10,
+                    fontSize: 24,
+                    fontFamily: 'Chewy-Regular',
+                  }}>
+                  Victory: If you successfully collect the picture before the
+                  time runs out, you move on to the next level.
+                </Text>
+              </View>
+              <View>
+                <Text
+                  style={{
+                    color: 'gold',
+                    padding: 10,
+                    fontSize: 30,
+                    fontFamily: 'Chewy-Regular',
+                  }}>
+                  Play and enjoy the game "Spot monopoly"!
+                </Text>
+              </View>
+              <View style={{height: 100}}></View>
+            </ScrollView>
+          </View>
 
           {/**BTN Back */}
           <TouchableOpacity

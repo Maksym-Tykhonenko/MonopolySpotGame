@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useState, useEffect} from 'react';
 import {
   Image,
   ImageBackground,
@@ -8,10 +8,151 @@ import {
   View,
 } from 'react-native';
 import {Dimensions} from 'react-native';
+import AsyncStorage from '@react-native-async-storage/async-storage';
 
 const GameScreen = ({navigation}) => {
   const windowWidth = Dimensions.get('window').width;
   const windowHeight = Dimensions.get('window').height;
+
+  const [anlock2Lvl, setAnlock2Lvl] = useState(false);
+  const [anlock3Lvl, setAnlock3Lvl] = useState(false);
+  const [anlock4Lvl, setAnlock4Lvl] = useState(false);
+  const [anlock5Lvl, setAnlock5Lvl] = useState(false);
+  const [anlock6Lvl, setAnlock6Lvl] = useState(false);
+  const [anlock7Lvl, setAnlock7Lvl] = useState(false);
+  const [anlock8Lvl, setAnlock8Lvl] = useState(false);
+  const [anlock9Lvl, setAnlock9Lvl] = useState(false);
+  const [anlock10Lvl, setAnlock10Lvl] = useState(false);
+
+  useEffect(() => {
+    getDataAbout2Lvl();
+    getDataAbout3Lvl();
+    getDataAbout4Lvl();
+    getDataAbout5Lvl();
+    getDataAbout6Lvl();
+    getDataAbout7Lvl();
+    getDataAbout8Lvl();
+    getDataAbout9Lvl();
+    getDataAbout10Lvl();
+  }, []);
+
+  const getDataAbout2Lvl = async () => {
+    try {
+      const jsonData = await AsyncStorage.getItem('First');
+      if (jsonData !== null) {
+        const parsedData = JSON.parse(jsonData);
+        console.log('parsedData==>', parsedData);
+        setAnlock2Lvl(parsedData.anlock2Lvl);
+      }
+    } catch (e) {
+      console.log('Помилка отримання даних:', e);
+    }
+  };
+
+  const getDataAbout3Lvl = async () => {
+    try {
+      const jsonData = await AsyncStorage.getItem('Second');
+      if (jsonData !== null) {
+        const parsedData = JSON.parse(jsonData);
+        console.log('parsedData==>', parsedData);
+        setAnlock3Lvl(parsedData.anlock3Lvl);
+      }
+    } catch (e) {
+      console.log('Помилка отримання даних:', e);
+    }
+  };
+
+  const getDataAbout4Lvl = async () => {
+    try {
+      const jsonData = await AsyncStorage.getItem('Third');
+      if (jsonData !== null) {
+        const parsedData = JSON.parse(jsonData);
+        console.log('parsedData==>', parsedData);
+        setAnlock4Lvl(parsedData.anlock4Lvl);
+      }
+    } catch (e) {
+      console.log('Помилка отримання даних:', e);
+    }
+  };
+
+  const getDataAbout5Lvl = async () => {
+    try {
+      const jsonData = await AsyncStorage.getItem('Fourth');
+      if (jsonData !== null) {
+        const parsedData = JSON.parse(jsonData);
+        console.log('parsedData==>', parsedData);
+        setAnlock5Lvl(parsedData.anlock5Lvl);
+      }
+    } catch (e) {
+      console.log('Помилка отримання даних:', e);
+    }
+  };
+
+  const getDataAbout6Lvl = async () => {
+    try {
+      const jsonData = await AsyncStorage.getItem('Fifth');
+      if (jsonData !== null) {
+        const parsedData = JSON.parse(jsonData);
+        console.log('parsedData==>', parsedData);
+        setAnlock6Lvl(parsedData.anlock6Lvl);
+      }
+    } catch (e) {
+      console.log('Помилка отримання даних:', e);
+    }
+  };
+
+  const getDataAbout7Lvl = async () => {
+    try {
+      const jsonData = await AsyncStorage.getItem('Sixth');
+      if (jsonData !== null) {
+        const parsedData = JSON.parse(jsonData);
+        console.log('parsedData==>', parsedData);
+        setAnlock7Lvl(parsedData.anlock7Lvl);
+      }
+    } catch (e) {
+      console.log('Помилка отримання даних:', e);
+    }
+  };
+
+  const getDataAbout8Lvl = async () => {
+    try {
+      const jsonData = await AsyncStorage.getItem('Seventh');
+      if (jsonData !== null) {
+        const parsedData = JSON.parse(jsonData);
+        console.log('parsedData==>', parsedData);
+        setAnlock8Lvl(parsedData.anlock8Lvl);
+      }
+    } catch (e) {
+      console.log('Помилка отримання даних:', e);
+    }
+  };
+
+  const getDataAbout9Lvl = async () => {
+    try {
+      const jsonData = await AsyncStorage.getItem('Eighth');
+      if (jsonData !== null) {
+        const parsedData = JSON.parse(jsonData);
+        console.log('parsedData==>', parsedData);
+        setAnlock9Lvl(parsedData.anlock9Lvl);
+      }
+    } catch (e) {
+      console.log('Помилка отримання даних:', e);
+    }
+  };
+
+  const getDataAbout10Lvl = async () => {
+    try {
+      const jsonData = await AsyncStorage.getItem('Ninth');
+      if (jsonData !== null) {
+        const parsedData = JSON.parse(jsonData);
+        console.log('parsedData==>', parsedData);
+        setAnlock10Lvl(parsedData.anlock10Lvl);
+      }
+    } catch (e) {
+      console.log('Помилка отримання даних:', e);
+    }
+  };
+
   return (
     <View style={{flex: 1}}>
       <ImageBackground
@@ -89,6 +230,7 @@ const GameScreen = ({navigation}) => {
 
               {/**2 lvl */}
               <TouchableOpacity
+                disabled={anlock2Lvl ? false : true}
                 onPress={() => {
                   navigation.navigate('Second');
                 }}
@@ -99,7 +241,9 @@ const GameScreen = ({navigation}) => {
                     width: windowWidth * 0.8,
                     height: 200,
                     borderRadius: 20,
-                    borderColor: 'gold',
+                    borderColor: anlock2Lvl
+                      ? 'gold'
+                      : 'rgba(128, 128, 128, 0.6)',
                     borderWidth: 3,
                   }}
                 />
@@ -118,7 +262,7 @@ const GameScreen = ({navigation}) => {
                   }}>
                   <Text
                     style={{
-                      color: 'gold',
+                      color: anlock2Lvl ? 'gold' : '#000',
                       fontFamily: 'Chewy-Regular',
                       fontSize: 25,
                       shadowColor: 'gold',
@@ -134,6 +278,7 @@ const GameScreen = ({navigation}) => {
 
               {/**3 lvl */}
               <TouchableOpacity
+                disabled={anlock3Lvl ? false : true}
                 onPress={() => {
                   navigation.navigate('Third');
                 }}
@@ -144,7 +289,9 @@ const GameScreen = ({navigation}) => {
                     width: windowWidth * 0.8,
                     height: 200,
                     borderRadius: 20,
-                    borderColor: 'gold',
+                    borderColor: anlock3Lvl
+                      ? 'gold'
+                      : 'rgba(128, 128, 128, 0.6)',
                     borderWidth: 3,
                   }}
                 />
@@ -168,7 +315,7 @@ const GameScreen = ({navigation}) => {
                       shadowOpacity: 0.8,
                       shadowRadius: 10,
                       elevation: 10,
-                      color: 'gold',
+                      color: anlock3Lvl ? 'gold' : '#000',
                       fontFamily: 'Chewy-Regular',
                       fontSize: 25,
                     }}>
@@ -179,6 +326,7 @@ const GameScreen = ({navigation}) => {
 
               {/**4 lvl */}
               <TouchableOpacity
+                disabled={anlock4Lvl ? false : true}
                 onPress={() => {
                   navigation.navigate('Fourth');
                 }}
@@ -189,7 +337,9 @@ const GameScreen = ({navigation}) => {
                     width: windowWidth * 0.8,
                     height: 200,
                     borderRadius: 20,
-                    borderColor: 'gold',
+                    borderColor: anlock4Lvl
+                      ? 'gold'
+                      : 'rgba(128, 128, 128, 0.6)',
                     borderWidth: 3,
                   }}
                 />
@@ -213,7 +363,7 @@ const GameScreen = ({navigation}) => {
                       shadowOpacity: 0.8,
                       shadowRadius: 10,
                       elevation: 10,
-                      color: 'gold',
+                      color: anlock4Lvl ? 'gold' : '#000',
                       fontFamily: 'Chewy-Regular',
                       fontSize: 25,
                     }}>
@@ -224,6 +374,7 @@ const GameScreen = ({navigation}) => {
 
               {/**5 lvl */}
               <TouchableOpacity
+                disabled={anlock5Lvl ? false : true}
                 onPress={() => {
                   navigation.navigate('Fifth');
                 }}
@@ -234,7 +385,9 @@ const GameScreen = ({navigation}) => {
                     width: windowWidth * 0.8,
                     height: 200,
                     borderRadius: 20,
-                    borderColor: 'gold',
+                    borderColor: anlock5Lvl
+                      ? 'gold'
+                      : 'rgba(128, 128, 128, 0.6)',
                     borderWidth: 3,
                   }}
                 />
@@ -258,7 +411,7 @@ const GameScreen = ({navigation}) => {
                       shadowOpacity: 0.8,
                       shadowRadius: 10,
                       elevation: 10,
-                      color: 'gold',
+                      color: anlock5Lvl ? 'gold' : '#000',
                       fontFamily: 'Chewy-Regular',
                       fontSize: 25,
                     }}>
@@ -269,6 +422,7 @@ const GameScreen = ({navigation}) => {
 
               {/**6 lvl */}
               <TouchableOpacity
+                disabled={anlock6Lvl ? false : true}
                 onPress={() => {
                   navigation.navigate('Sixth');
                 }}
@@ -279,7 +433,9 @@ const GameScreen = ({navigation}) => {
                     width: windowWidth * 0.8,
                     height: 200,
                     borderRadius: 20,
-                    borderColor: 'gold',
+                    borderColor: anlock6Lvl
+                      ? 'gold'
+                      : 'rgba(128, 128, 128, 0.6)',
                     borderWidth: 3,
                   }}
                 />
@@ -303,7 +459,7 @@ const GameScreen = ({navigation}) => {
                       shadowOpacity: 0.8,
                       shadowRadius: 10,
                       elevation: 10,
-                      color: 'gold',
+                      color: anlock6Lvl ? 'gold' : '#000',
                       fontFamily: 'Chewy-Regular',
                       fontSize: 25,
                     }}>
@@ -314,6 +470,7 @@ const GameScreen = ({navigation}) => {
 
               {/**7 lvl */}
               <TouchableOpacity
+                disabled={anlock7Lvl ? false : true}
                 onPress={() => {
                   navigation.navigate('Seventh');
                 }}
@@ -324,7 +481,9 @@ const GameScreen = ({navigation}) => {
                     width: windowWidth * 0.8,
                     height: 200,
                     borderRadius: 20,
-                    borderColor: 'gold',
+                    borderColor: anlock7Lvl
+                      ? 'gold'
+                      : 'rgba(128, 128, 128, 0.6)',
                     borderWidth: 3,
                   }}
                 />
@@ -348,7 +507,7 @@ const GameScreen = ({navigation}) => {
                       shadowOpacity: 0.8,
                       shadowRadius: 10,
                       elevation: 10,
-                      color: 'gold',
+                      color: anlock7Lvl ? 'gold' : '#000',
                       fontFamily: 'Chewy-Regular',
                       fontSize: 25,
                     }}>
@@ -359,6 +518,7 @@ const GameScreen = ({navigation}) => {
 
               {/**8 lvl */}
               <TouchableOpacity
+                disabled={anlock8Lvl ? false : true}
                 onPress={() => {
                   navigation.navigate('Eighth');
                 }}
@@ -369,7 +529,9 @@ const GameScreen = ({navigation}) => {
                     width: windowWidth * 0.8,
                     height: 200,
                     borderRadius: 20,
-                    borderColor: 'gold',
+                    borderColor: anlock8Lvl
+                      ? 'gold'
+                      : 'rgba(128, 128, 128, 0.6)',
                     borderWidth: 3,
                   }}
                 />
@@ -393,7 +555,7 @@ const GameScreen = ({navigation}) => {
                       shadowOpacity: 0.8,
                       shadowRadius: 10,
                       elevation: 10,
-                      color: 'gold',
+                      color: anlock8Lvl ? 'gold' : '#000',
                       fontFamily: 'Chewy-Regular',
                       fontSize: 25,
                     }}>
@@ -404,6 +566,7 @@ const GameScreen = ({navigation}) => {
 
               {/**9 lvl */}
               <TouchableOpacity
+                disabled={anlock9Lvl ? false : true}
                 onPress={() => {
                   navigation.navigate('Ninth');
                 }}
@@ -414,7 +577,9 @@ const GameScreen = ({navigation}) => {
                     width: windowWidth * 0.8,
                     height: 200,
                     borderRadius: 20,
-                    borderColor: 'gold',
+                    borderColor: anlock9Lvl
+                      ? 'gold'
+                      : 'rgba(128, 128, 128, 0.6)',
                     borderWidth: 3,
                   }}
                 />
@@ -438,7 +603,7 @@ const GameScreen = ({navigation}) => {
                       shadowOpacity: 0.8,
                       shadowRadius: 10,
                       elevation: 10,
-                      color: 'gold',
+                      color: anlock9Lvl ? 'gold' : '#000',
                       fontFamily: 'Chewy-Regular',
                       fontSize: 25,
                     }}>
@@ -449,6 +614,7 @@ const GameScreen = ({navigation}) => {
 
               {/**10 lvl */}
               <TouchableOpacity
+                disabled={anlock10Lvl ? false : true}
                 onPress={() => {
                   navigation.navigate('Tenth');
                 }}
@@ -459,7 +625,9 @@ const GameScreen = ({navigation}) => {
                     width: windowWidth * 0.8,
                     height: 200,
                     borderRadius: 20,
-                    borderColor: 'gold',
+                    borderColor: anlock10Lvl
+                      ? 'gold'
+                      : 'rgba(128, 128, 128, 0.6)',
                     borderWidth: 3,
                   }}
                 />
@@ -483,7 +651,7 @@ const GameScreen = ({navigation}) => {
                       shadowOpacity: 0.8,
                       shadowRadius: 10,
                       elevation: 10,
-                      color: 'gold',
+                      color: anlock10Lvl ? 'gold' : '#000',
                       fontFamily: 'Chewy-Regular',
                       fontSize: 25,
                     }}>

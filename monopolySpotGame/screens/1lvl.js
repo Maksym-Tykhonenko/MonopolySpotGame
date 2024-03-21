@@ -8,6 +8,7 @@ import {
   Alert,
 } from 'react-native';
 import Timer from '../components/Timer';
+import AsyncStorage from '@react-native-async-storage/async-storage';
 
 const First = ({navigation}) => {
   const [board, setBoard] = useState([
@@ -34,7 +35,42 @@ const First = ({navigation}) => {
 
   const [timer, setTimer] = useState(600);
   const [isRuning, setIsRuning] = useState(false);
-  const [boardIsComplete, setBoardIsComplete] = useState(false);
+  const [anlock2Lvl, setAnlock2Lvl] = useState(false);
+  // AsyncStorage
+  useEffect(() => {
+    getData();
+  }, []);
+
+  useEffect(() => {
+    setData();
+  }, [anlock2Lvl]);
+
+  const setData = async () => {
+    try {
+      const data = {
+        anlock2Lvl,
+      };
+      const jsonData = JSON.stringify(data);
+      await AsyncStorage.setItem('First', jsonData);
+      console.log('Дані збережено в AsyncStorage');
+    } catch (e) {
+      console.log('Помилка збереження даних:', e);
+    }
+  };
+
+  const getData = async () => {
+    try {
+      const jsonData = await AsyncStorage.getItem('First');
+      if (jsonData !== null) {
+        const parsedData = JSON.parse(jsonData);
+        console.log('parsedData==>', parsedData);
+        setAnlock2Lvl(parsedData.anlock2Lvl);
+      }
+    } catch (e) {
+      console.log('Помилка отримання даних:', e);
+    }
+  };
+
   //эфект обратного отщета времени
   useEffect(() => {
     const timerInterval = setInterval(() => {
@@ -99,8 +135,8 @@ const First = ({navigation}) => {
       setFirtRender(false);
     } else if (isBoardSolved()) {
       //Alert.alert('Ты победил!');
+      setAnlock2Lvl(true);
       setComplited(true);
-      setVenusAnlock(true);
     }
   }, []);
   /////////////////////////////
@@ -149,6 +185,7 @@ const First = ({navigation}) => {
     }
     return true;
   };
+
   return (
     <View style={{flex: 1}}>
       <ImageBackground
