@@ -178,7 +178,7 @@ const GameScreen = ({navigation}) => {
                   shadowRadius: 10,
                   elevation: 10,
                 }}>
-                Spot monopoly!
+                Spot game!
               </Text>
             </View>
 

@@ -33,7 +33,7 @@ const HomeScreen = ({navigation}) => {
                 shadowRadius: 10,
                 elevation: 10,
               }}>
-              monopoly!
+              game!
             </Text>
           </View>
 

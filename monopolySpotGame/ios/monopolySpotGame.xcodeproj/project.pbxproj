@@ -489,11 +489,11 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
-				CURRENT_PROJECT_VERSION = 2;
+				CURRENT_PROJECT_VERSION = 3;
 				DEVELOPMENT_TEAM = G7AN8PNKWS;
 				ENABLE_BITCODE = NO;
 				INFOPLIST_FILE = monopolySpotGame/Info.plist;
-				INFOPLIST_KEY_CFBundleDisplayName = "Monopoly Spot Game";
+				INFOPLIST_KEY_CFBundleDisplayName = "Spot Game";
 				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.puzzle-games";
 				IPHONEOS_DEPLOYMENT_TARGET = 13.4;
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -520,10 +520,10 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
-				CURRENT_PROJECT_VERSION = 2;
+				CURRENT_PROJECT_VERSION = 3;
 				DEVELOPMENT_TEAM = G7AN8PNKWS;
 				INFOPLIST_FILE = monopolySpotGame/Info.plist;
-				INFOPLIST_KEY_CFBundleDisplayName = "Monopoly Spot Game";
+				INFOPLIST_KEY_CFBundleDisplayName = "Spot Game";
 				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.puzzle-games";
 				IPHONEOS_DEPLOYMENT_TARGET = 13.4;
 				LD_RUNPATH_SEARCH_PATHS = (

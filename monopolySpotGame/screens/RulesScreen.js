@@ -29,7 +29,7 @@ const RulesScreen = ({navigation}) => {
                     fontSize: 30,
                     fontFamily: 'Chewy-Regular',
                   }}>
-                  Rules of the game "Spot monopoly":
+                  Rules of the game "Spot game":
                 </Text>
               </View>
               <View>
