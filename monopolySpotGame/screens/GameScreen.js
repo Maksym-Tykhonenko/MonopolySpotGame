@@ -190,7 +190,7 @@ const GameScreen = ({navigation}) => {
                 }}
                 style={{position: 'relative', marginBottom: 20}}>
                 <Image
-                  source={require('../assets/levelImgs/1.jpg')}
+                  source={require('../assets/newDiz/image1.jpeg')}
                   style={{
                     width: windowWidth * 0.8,
                     height: 200,
@@ -236,7 +236,7 @@ const GameScreen = ({navigation}) => {
                 }}
                 style={{position: 'relative', marginBottom: 20}}>
                 <Image
-                  source={require('../assets/levelImgs/2.jpg')}
+                  source={require('../assets/newDiz/image2.webp')}
                   style={{
                     width: windowWidth * 0.8,
                     height: 200,
@@ -284,7 +284,7 @@ const GameScreen = ({navigation}) => {
                 }}
                 style={{position: 'relative', marginBottom: 20}}>
                 <Image
-                  source={require('../assets/levelImgs/3.jpg')}
+                  source={require('../assets/newDiz/image3.webp')}
                   style={{
                     width: windowWidth * 0.8,
                     height: 200,
@@ -332,7 +332,7 @@ const GameScreen = ({navigation}) => {
                 }}
                 style={{position: 'relative', marginBottom: 20}}>
                 <Image
-                  source={require('../assets/levelImgs/4.jpg')}
+                  source={require('../assets/newDiz/image4.jpeg')}
                   style={{
                     width: windowWidth * 0.8,
                     height: 200,
@@ -380,7 +380,7 @@ const GameScreen = ({navigation}) => {
                 }}
                 style={{position: 'relative', marginBottom: 20}}>
                 <Image
-                  source={require('../assets/levelImgs/5.jpg')}
+                  source={require('../assets/newDiz/image5.jpeg')}
                   style={{
                     width: windowWidth * 0.8,
                     height: 200,
@@ -428,7 +428,7 @@ const GameScreen = ({navigation}) => {
                 }}
                 style={{position: 'relative', marginBottom: 20}}>
                 <Image
-                  source={require('../assets/levelImgs/6.jpg')}
+                  source={require('../assets/newDiz/image6.jpeg')}
                   style={{
                     width: windowWidth * 0.8,
                     height: 200,
@@ -476,7 +476,7 @@ const GameScreen = ({navigation}) => {
                 }}
                 style={{position: 'relative', marginBottom: 20}}>
                 <Image
-                  source={require('../assets/levelImgs/7.jpg')}
+                  source={require('../assets/newDiz/image7.jpeg')}
                   style={{
                     width: windowWidth * 0.8,
                     height: 200,
@@ -524,7 +524,7 @@ const GameScreen = ({navigation}) => {
                 }}
                 style={{position: 'relative', marginBottom: 20}}>
                 <Image
-                  source={require('../assets/levelImgs/8.jpg')}
+                  source={require('../assets/newDiz/image8.jpeg')}
                   style={{
                     width: windowWidth * 0.8,
                     height: 200,
@@ -572,7 +572,7 @@ const GameScreen = ({navigation}) => {
                 }}
                 style={{position: 'relative', marginBottom: 20}}>
                 <Image
-                  source={require('../assets/levelImgs/9.jpg')}
+                  source={require('../assets/newDiz/image9.jpeg')}
                   style={{
                     width: windowWidth * 0.8,
                     height: 200,
@@ -620,7 +620,7 @@ const GameScreen = ({navigation}) => {
                 }}
                 style={{position: 'relative', marginBottom: 20}}>
                 <Image
-                  source={require('../assets/levelImgs/10.jpg')}
+                  source={require('../assets/newDiz/image10.jpg')}
                   style={{
                     width: windowWidth * 0.8,
                     height: 200,

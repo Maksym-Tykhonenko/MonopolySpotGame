@@ -277,7 +277,7 @@ const Third = ({navigation}) => {
           {/** Картинка яку треба зібрати */}
           <View style={{marginTop: 20}}>
             <Image
-              source={require('../assets/levelImgs/3.jpg')}
+              source={require('../assets/newDiz/image3.webp')}
               style={{
                 width: 200,
                 height: 200,

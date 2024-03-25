@@ -40,9 +40,8 @@ const RulesScreen = ({navigation}) => {
                     fontSize: 24,
                     fontFamily: 'Chewy-Regular',
                   }}>
-                  Goal of the game: Collect a photo dedicated to the game
-                  "Monopoly" by placing all the parts of the picture in the
-                  correct order.
+                  Goal of the game: Collect a photo of nature by placing all the
+                  parts of the picture in the correct sequence
                 </Text>
               </View>
               <View>
@@ -116,7 +115,7 @@ const RulesScreen = ({navigation}) => {
                     fontSize: 30,
                     fontFamily: 'Chewy-Regular',
                   }}>
-                  Play and enjoy the game "Spot monopoly"!
+                  Play and enjoy the game "Spot game"!
                 </Text>
               </View>
               <View style={{height: 100}}></View>

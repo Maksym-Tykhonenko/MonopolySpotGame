@@ -278,7 +278,7 @@ const Fourth = ({navigation}) => {
           {/** Картинка яку треба зібрати */}
           <View style={{marginTop: 20}}>
             <Image
-              source={require('../assets/levelImgs/4.jpg')}
+              source={require('../assets/newDiz/image4.jpeg')}
               style={{
                 width: 200,
                 height: 200,

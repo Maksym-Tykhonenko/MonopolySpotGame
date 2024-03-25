@@ -241,7 +241,7 @@ const Tenth = ({navigation}) => {
           {/** Картинка яку треба зібрати */}
           <View style={{marginTop: 20}}>
             <Image
-              source={require('../assets/levelImgs/10.jpg')}
+              source={require('../assets/newDiz/image10.jpg')}
               style={{
                 width: 200,
                 height: 200,
