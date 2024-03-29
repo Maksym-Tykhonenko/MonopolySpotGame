@@ -20,7 +20,7 @@ const HomeScreen = ({navigation}) => {
                 shadowRadius: 10,
                 elevation: 10,
               }}>
-              Spot
+              Let's
             </Text>
             <Text
               style={{
@@ -33,7 +33,7 @@ const HomeScreen = ({navigation}) => {
                 shadowRadius: 10,
                 elevation: 10,
               }}>
-              game!
+              play!
             </Text>
           </View>
 

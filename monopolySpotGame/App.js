@@ -28,27 +28,33 @@ const Stack = createNativeStackNavigator();
 const App = () => {
   const [louderIsLouded, setLouderIsLouded] = useState(false);
   const Louder = props => {
-    const fadeAnim = useRef(new Animated.Value(1)).current;
+    const fadeAnim = useRef(new Animated.Value(0)).current;
     const appearingAnim = useRef(new Animated.Value(0)).current;
 
     useEffect(() => {
-      Animated.timing(fadeAnim, {
+      const firstImageAnimation = Animated.timing(fadeAnim, {
         toValue: 1,
-        duration: 4000,
+        duration: 2000,
         useNativeDriver: true,
-      }).start();
-    }, []);
+      });
 
-    useEffect(() => {
-      Animated.timing(appearingAnim, {
+      const secondImageAnimation = Animated.timing(appearingAnim, {
         toValue: 1,
-        duration: 5000,
+        duration: 2000,
         useNativeDriver: true,
-      }).start();
+      });
 
-      setTimeout(() => {
-        setLouderIsLouded(true);
-      }, 8000);
+      Animated.sequence([
+        Animated.delay(1000), // Затримка між анімаціями для першого зображення
+        firstImageAnimation,
+        Animated.delay(1000), // Затримка перед анімацією другого зображення
+        secondImageAnimation,
+      ]).start(() => {
+        // Після завершення послідовної анімації встановлюємо прапорець louderIsLouded
+        setTimeout(() => {
+          setLouderIsLouded(true);
+        }, 2000);
+      });
     }, []);
 
     return (
@@ -56,53 +62,24 @@ const App = () => {
         <ImageBackground
           source={require('./assets/backgr_1.jpg')}
           style={{flex: 1}}>
-          <Animated.View
+          <Animated.Image
+            source={require('./assets/louder/loader_1.jpg')}
+            style={{
+              width: '100%',
+              height: '100%',
+              opacity: fadeAnim,
+            }}
+          />
+
+          <Animated.Image
+            source={require('./assets/louder/loader_2.jpg')}
             style={{
               position: 'absolute',
-              top: '40%',
-              left: '40%',
-              transform: [
-                {translateX: -100}, // Adjust these values based on your text size
-                {translateY: -25},
-              ],
+              width: '100%',
+              height: '100%',
               opacity: appearingAnim,
-            }}>
-            <Animated.View
-              style={{
-                flex: 1,
-                alignItems: 'center',
-                justifyContent: 'center',
-                marginTop: -60,
-                marginLeft: 40,
-              }}>
-              <Animated.Text
-                style={{
-                  color: 'gold',
-                  fontFamily: 'Chewy-Regular',
-                  fontSize: 100,
-                  shadowColor: 'gold',
-                  shadowOffset: {width: 0, height: 8},
-                  shadowOpacity: 0.8,
-                  shadowRadius: 10,
-                  elevation: 10,
-                }}>
-                Let's
-              </Animated.Text>
-              <Animated.Text
-                style={{
-                  color: 'gold',
-                  fontFamily: 'Chewy-Regular',
-                  fontSize: 100,
-                  shadowColor: 'gold',
-                  shadowOffset: {width: 0, height: 8},
-                  shadowOpacity: 0.8,
-                  shadowRadius: 10,
-                  elevation: 10,
-                }}>
-                play
-              </Animated.Text>
-            </Animated.View>
-          </Animated.View>
+            }}
+          />
         </ImageBackground>
       </View>
     );
