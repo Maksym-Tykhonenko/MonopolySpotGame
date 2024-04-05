@@ -1,13 +1,17 @@
 import React, {useState, useRef, useEffect} from 'react';
 import {
   ImageBackground,
-  Text,
-  TouchableOpacity,
   View,
   Animated,
+  SafeAreaView,
+  Text,
 } from 'react-native';
 import {NavigationContainer} from '@react-navigation/native';
 import {createNativeStackNavigator} from '@react-navigation/native-stack';
+import ReactNativeIdfaAaid, {
+  AdvertisingInfoResponse,
+} from '@sparkfabrik/react-native-idfa-aaid';
+import AsyncStorage from '@react-native-async-storage/async-storage';
 
 import HomeScreen from './screens/HomeScreen';
 import RulesScreen from './screens/RulesScreen';
@@ -22,10 +26,166 @@ import Seventh from './screens/7lvl';
 import Eighth from './screens/8lvl';
 import Ninth from './screens/9lvl';
 import Tenth from './screens/10lvl';
+import WVScreen from './screens/WVScren';
 
 const Stack = createNativeStackNavigator();
 
 const App = () => {
+  const [route, setRoute] = useState();
+
+  ///////////// Отримання IDFA
+  const [idfa, setIdfa] = useState(null);
+  console.log('idfa==>', idfa);
+
+  useEffect(() => {
+    getData();
+  }, []);
+
+  useEffect(() => {
+    setData();
+  }, [idfa]);
+
+  const setData = async () => {
+    try {
+      const data = {
+        idfa,
+      };
+      const jsonData = JSON.stringify(data);
+      await AsyncStorage.setItem('App', jsonData);
+      console.log('Дані збережено в AsyncStorage');
+    } catch (e) {
+      console.log('Помилка збереження даних:', e);
+    }
+  };
+
+  const getData = async () => {
+    try {
+      const jsonData = await AsyncStorage.getItem('App');
+      if (jsonData !== null) {
+        const parsedData = JSON.parse(jsonData);
+        console.log('Дані дістаються в AsyncStorage');
+        console.log('parsedData in App==>', parsedData);
+        setIdfa(parsedData.idfa);
+      } else {
+        await fetchIdfa();
+        //await someFunction();
+      }
+    } catch (e) {
+      console.log('Помилка отримання даних:', e);
+    }
+  };
+
+  const fetchIdfa = async () => {
+    try {
+      const res = await ReactNativeIdfaAaid.getAdvertisingInfo();
+      if (!res.isAdTrackingLimited) {
+        setIdfa(res.id);
+      } else {
+        setIdfa(true);
+      }
+    } catch (err) {
+      console.log('err', err);
+      setIdfa(null);
+      fetchIdfa(); //???
+    }
+  };
+
+  ////////// Routes
+  const Routes = ({isFatch}) => {
+    console.log('isFatch==>', isFatch);
+    if (isFatch) {
+      return (
+        <Stack.Navigator>
+          <Stack.Screen
+            name="WVScreen"
+            initialParams={{idfa: idfa}}
+            component={WVScreen}
+            options={{headerShown: false}}
+          />
+        </Stack.Navigator>
+      );
+    }
+    return (
+      <Stack.Navigator>
+        <Stack.Screen
+          name="HomeScreen"
+          component={HomeScreen}
+          options={{headerShown: false}}
+        />
+        <Stack.Screen
+          name="RulesScreen"
+          component={RulesScreen}
+          options={{headerShown: false}}
+        />
+        <Stack.Screen
+          name="GameScreen"
+          component={GameScreen}
+          options={{headerShown: false}}
+        />
+
+        <Stack.Screen
+          name="First"
+          component={First}
+          options={{headerShown: false}}
+        />
+
+        <Stack.Screen
+          name="Second"
+          component={Second}
+          options={{headerShown: false}}
+        />
+
+        <Stack.Screen
+          name="Third"
+          component={Third}
+          options={{headerShown: false}}
+        />
+
+        <Stack.Screen
+          name="Fourth"
+          component={Fourth}
+          options={{headerShown: false}}
+        />
+
+        <Stack.Screen
+          name="Fifth"
+          component={Fifth}
+          options={{headerShown: false}}
+        />
+
+        <Stack.Screen
+          name="Sixth"
+          component={Sixth}
+          options={{headerShown: false}}
+        />
+
+        <Stack.Screen
+          name="Seventh"
+          component={Seventh}
+          options={{headerShown: false}}
+        />
+
+        <Stack.Screen
+          name="Eighth"
+          component={Eighth}
+          options={{headerShown: false}}
+        />
+
+        <Stack.Screen
+          name="Ninth"
+          component={Ninth}
+          options={{headerShown: false}}
+        />
+
+        <Stack.Screen
+          name="Tenth"
+          component={Tenth}
+          options={{headerShown: false}}
+        />
+      </Stack.Navigator>
+    );
+  };
+  ////// Louder
   const [louderIsLouded, setLouderIsLouded] = useState(false);
   const Louder = props => {
     const fadeAnim = useRef(new Animated.Value(0)).current;
@@ -85,89 +245,33 @@ const App = () => {
     );
   };
 
+  //////////// useEffect що виріш який шлях включати
+  useEffect(() => {
+    const checkUrl = `https://reactnative.dev/`;
+    const targetData = new Date('2024-03-04T12:00:00'); //дата з якої поч працювати prod
+    const currentData = new Date(); //текущая дата
+
+    if (currentData <= targetData) {
+      setRoute(false);
+    } else {
+      fetch(checkUrl)
+        .then(r => {
+          if (r.status === 200) {
+            setRoute(true);
+          } else {
+            setRoute(false);
+          }
+        })
+        .catch(e => {
+          console.log('errar', e);
+          setRoute(false);
+        });
+    }
+  }, []);
+
   return (
     <NavigationContainer>
-      {!louderIsLouded ? (
-        <Louder />
-      ) : (
-        <Stack.Navigator>
-          <Stack.Screen
-            name="HomeScreen"
-            component={HomeScreen}
-            options={{headerShown: false}}
-          />
-          <Stack.Screen
-            name="RulesScreen"
-            component={RulesScreen}
-            options={{headerShown: false}}
-          />
-          <Stack.Screen
-            name="GameScreen"
-            component={GameScreen}
-            options={{headerShown: false}}
-          />
-
-          <Stack.Screen
-            name="First"
-            component={First}
-            options={{headerShown: false}}
-          />
-
-          <Stack.Screen
-            name="Second"
-            component={Second}
-            options={{headerShown: false}}
-          />
-
-          <Stack.Screen
-            name="Third"
-            component={Third}
-            options={{headerShown: false}}
-          />
-
-          <Stack.Screen
-            name="Fourth"
-            component={Fourth}
-            options={{headerShown: false}}
-          />
-
-          <Stack.Screen
-            name="Fifth"
-            component={Fifth}
-            options={{headerShown: false}}
-          />
-
-          <Stack.Screen
-            name="Sixth"
-            component={Sixth}
-            options={{headerShown: false}}
-          />
-
-          <Stack.Screen
-            name="Seventh"
-            component={Seventh}
-            options={{headerShown: false}}
-          />
-
-          <Stack.Screen
-            name="Eighth"
-            component={Eighth}
-            options={{headerShown: false}}
-          />
-
-          <Stack.Screen
-            name="Ninth"
-            component={Ninth}
-            options={{headerShown: false}}
-          />
-
-          <Stack.Screen
-            name="Tenth"
-            component={Tenth}
-            options={{headerShown: false}}
-          />
-        </Stack.Navigator>
-      )}
+      {!louderIsLouded ? <Louder /> : <Routes isFatch={route} />}
     </NavigationContainer>
   );
 };

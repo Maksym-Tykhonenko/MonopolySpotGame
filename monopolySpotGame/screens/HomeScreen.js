@@ -1,5 +1,6 @@
 import React from 'react';
 import {ImageBackground, Text, TouchableOpacity, View} from 'react-native';
+import AntDesign from 'react-native-vector-icons/AntDesign';
 
 const HomeScreen = ({navigation}) => {
   return (
