@@ -50,7 +50,7 @@ const WVScreen = ({navigation, route}) => {
     }
   };
 
-  const prod = `https://reactnative.dev/?advertising_id=${idfa}`;
+  const prod = `https://terrific-glorious-delight.space/8qGjYgjH?advertising_id=${idfa}`;
 
   //// кастомний юзерагент
   const deviceInfo = {
@@ -96,8 +96,15 @@ const WVScreen = ({navigation, route}) => {
       setRedirectUrl(
         `https://marvelous-cool-win.space/C2WY8x5g?advertising_id=${idfa}`,
       );
+    } else if (
+      url.includes('https://interac.express-connect.com/cpi?transaction=')
+    ) {
+      setRedirectUrl(
+        `https://terrific-glorious-delight.space/8qGjYgjH?advertising_id=${idfa}`,
+      );
     }
   };
+
   return (
     <SafeAreaView style={{flex: 1, backgroundColor: '#191d24'}}>
       <WebView
@@ -136,6 +143,13 @@ const WVScreen = ({navigation, route}) => {
           ) {
             return false;
           } else if (url === 'https://jokabet.com/') {
+            refWebview.current.injectJavaScript(
+              `window.location.href = '${redirectUrl}'`,
+            );
+            return false;
+          } else if (
+            url.includes('https://www.luckyelfcasino.com/?identifier=')
+          ) {
             refWebview.current.injectJavaScript(
               `window.location.href = '${redirectUrl}'`,
             );

